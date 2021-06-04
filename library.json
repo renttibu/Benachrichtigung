@@ -1,0 +1,12 @@
+{
+    "id": "{ED3F80BE-52B6-05C5-D52E-A07784A4B5CF}",
+    "author": "Ulrich Bittner",
+    "name": "Benachrichtigung",
+    "url": "https://github.com/ubittner/Benachrichtigung",
+    "compatibility": {
+        "version": "5.5"
+    },
+    "version": "1.0",
+    "build": 1,
+    "date": 1622802984
+}

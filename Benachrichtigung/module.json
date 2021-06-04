@@ -1,0 +1,15 @@
+{
+    "id": "{F76B66A0-01BB-59C6-59D1-CAC273CFF253}",
+    "name": "Benachrichtigung",
+    "type": 3,
+    "vendor": "Ulrich Bittner",
+    "aliases": 
+    [
+        "Benachrichtigung"
+    ],
+    "url": "https://github.com/ubittner/Benachrichtigung/tree/main/Benachrichtigung",
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "UBBN"
+}
