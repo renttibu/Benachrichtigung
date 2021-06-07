@@ -1360,7 +1360,7 @@ class Benachrichtigung extends IPSModule
                     'Description'                         => 'Alarmanlage unscharf',
                     'ID'                                  => $systemStateID,
                     'TriggerType'                         => 6,
-                    'TriggerValue'                        => 'false',
+                    'TriggerValue'                        => '0',
                     'SecondVariable'                      => 0,
                     'SecondVariableValue'                 => '',
                     'Title'                               => $config['Location'],
@@ -1387,7 +1387,7 @@ class Benachrichtigung extends IPSModule
                     'Description'                         => 'Alarmanlage bedingt scharf',
                     'ID'                                  => $systemStateID,
                     'TriggerType'                         => 6,
-                    'TriggerValue'                        => 'true',
+                    'TriggerValue'                        => '1',
                     'SecondVariable'                      => $doorWindowStateID,
                     'SecondVariableValue'                 => 'true',
                     'Title'                               => $config['Location'],
@@ -1414,7 +1414,7 @@ class Benachrichtigung extends IPSModule
                     'Description'                         => 'Alarmanlage scharf',
                     'ID'                                  => $systemStateID,
                     'TriggerType'                         => 6,
-                    'TriggerValue'                        => 'true',
+                    'TriggerValue'                        => '1',
                     'SecondVariable'                      => $doorWindowStateID,
                     'SecondVariableValue'                 => 'false',
                     'Title'                               => $config['Location'],
@@ -1443,7 +1443,7 @@ class Benachrichtigung extends IPSModule
                     'TriggerType'                         => 1,
                     'TriggerValue'                        => '',
                     'SecondVariable'                      => $alarmStateID,
-                    'SecondVariableValue'                 => 1,
+                    'SecondVariableValue'                 => '1',
                     'Title'                               => $config['Location'],
                     'TriggeringDetector'                  => $triggeringDetectorID,
                     'MessageText'                         => '%1$s hat einen Alarm ausgelöst!',
@@ -1491,7 +1491,7 @@ class Benachrichtigung extends IPSModule
                     'Description'                         => $config['SystemName'] . ' unscharf',
                     'ID'                                  => $alarmZoneID,
                     'TriggerType'                         => 6,
-                    'TriggerValue'                        => 'false',
+                    'TriggerValue'                        => '0',
                     'SecondVariable'                      => 0,
                     'SecondVariableValue'                 => '',
                     'Title'                               => $config['Location'],
@@ -1518,7 +1518,7 @@ class Benachrichtigung extends IPSModule
                     'Description'                         => $config['SystemName'] . ' bedingt scharf',
                     'ID'                                  => $alarmZoneID,
                     'TriggerType'                         => 6,
-                    'TriggerValue'                        => 'true',
+                    'TriggerValue'                        => '1',
                     'SecondVariable'                      => $doorWindowStateID,
                     'SecondVariableValue'                 => 'true',
                     'Title'                               => $config['Location'],
@@ -1545,7 +1545,7 @@ class Benachrichtigung extends IPSModule
                     'Description'                         => $config['SystemName'] . ' scharf',
                     'ID'                                  => $alarmZoneID,
                     'TriggerType'                         => 6,
-                    'TriggerValue'                        => 'true',
+                    'TriggerValue'                        => '1',
                     'SecondVariable'                      => $doorWindowStateID,
                     'SecondVariableValue'                 => 'false',
                     'Title'                               => $config['Location'],
@@ -1574,7 +1574,7 @@ class Benachrichtigung extends IPSModule
                     'TriggerType'                         => 1,
                     'TriggerValue'                        => '',
                     'SecondVariable'                      => $alarmStateID,
-                    'SecondVariableValue'                 => 1,
+                    'SecondVariableValue'                 => '1',
                     'Title'                               => $config['Location'],
                     'TriggeringDetector'                  => $triggeringDetectorID,
                     'MessageText'                         => '%1$s hat einen Alarm ausgelöst!',
@@ -1600,7 +1600,7 @@ class Benachrichtigung extends IPSModule
         if (IPS_HasChanges($this->InstanceID)) {
             IPS_ApplyChanges($this->InstanceID);
         }
-        echo 'Die Vorlage Alarmzone wurde erfolgreich angelegt!';
+        echo 'Die Vorlage wurde erfolgreich angelegt!';
     }
 
     public function ShowVariableDetails(int $VariableID): void
