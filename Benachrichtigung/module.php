@@ -45,6 +45,15 @@ class Benachrichtigung extends IPSModule
         $this->RegisterPropertyString('NexxtMobile', '[]');
         $this->RegisterPropertyString('Sipgate', '[]');
         $this->RegisterPropertyString('Telegram', '[]');
+
+        // Variables
+        $id = @$this->GetIDForIdent('Notification');
+        $this->RegisterVariableBoolean('Notification', 'Benachrichtigung', '~Switch', 10);
+        $this->EnableAction('Notification');
+        if ($id == false) {
+            IPS_SetIcon($this->GetIDForIdent('Notification'), 'Mobile');
+            $this->SetValue('Notification', true);
+        }
     }
 
     public function ApplyChanges()
@@ -118,6 +127,11 @@ class Benachrichtigung extends IPSModule
                 //$Data[5] = timestamp last value
 
                 if ($this->CheckMaintenanceMode()) {
+                    return;
+                }
+
+                if (!$this->GetValue('Notification')) {
+                    $this->SendDebug(__FUNCTION__, 'Abbruch, die Benachrichtigungsfunktion ist ausgeschaltet!', 0);
                     return;
                 }
 
@@ -409,67 +423,71 @@ class Benachrichtigung extends IPSModule
                                         'value'   => ''
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udd34"'),
+                                        'caption' => json_decode('"\ud83d\udd34"'), # red
                                         'value'   => '"\ud83d\udd34"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udfe0"'),
+                                        'caption' => json_decode('"\ud83d\udfe0"'), # orange
                                         'value'   => '"\ud83d\udfe0"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udfe1"'),
+                                        'caption' => json_decode('"\ud83d\udfe1"'), # yellow
                                         'value'   => '"\ud83d\udfe1"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udfe2"'),
+                                        'caption' => json_decode('"\ud83d\udfe2"'), # green
                                         'value'   => '"\ud83d\udfe2"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udd35"'),
+                                        'caption' => json_decode('"\ud83d\udd35"'), # blue
                                         'value'   => '"\ud83d\udd35"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udfe3"'),
+                                        'caption' => json_decode('"\ud83d\udfe3"'), # violett
                                         'value'   => '"\ud83d\udfe3"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udfe4"'),
+                                        'caption' => json_decode('"\ud83d\udfe4"'), # brown
                                         'value'   => '"\ud83d\udfe4"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\u26ab"'),
+                                        'caption' => json_decode('"\u26ab"'), # black
                                         'value'   => '"\u26ab"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\u26aa"'),
+                                        'caption' => json_decode('"\u26aa"'), # white
                                         'value'   => '"\u26aa"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udd57"'),
+                                        'caption' => json_decode('"\ud83d\udd57"'), # clock
                                         'value'   => '"\ud83d\udd57"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\u26a0\ufe0f"'),
+                                        'caption' => json_decode('"\u2705"'), # # white_check_mark
+                                        'value'   => '"\u2705"'
+                                    ],
+                                    [
+                                        'caption' => json_decode('"\u26a0\ufe0f"'), # warning
                                         'value'   => '"\u26a0\ufe0f"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\u2757"'),
+                                        'caption' => json_decode('"\u2757"'), # red exclamation mark
                                         'value'   => '"\u2757"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udeab"'),
+                                        'caption' => json_decode('"\ud83d\udeab"'), # no entry sign
                                         'value'   => '"\ud83d\udeab"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udd25"'),
+                                        'caption' => json_decode('"\ud83d\udd25"'), # flame
                                         'value'   => '"\ud83d\udd25"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udca7"'),
+                                        'caption' => json_decode('"\ud83d\udca7"'), # droplet
                                         'value'   => '"\ud83d\udca7"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\uD83E\uDD77"'),
+                                        'caption' => json_decode('"\uD83E\uDD77"'), # nina
                                         'value'   => '"\uD83E\uDD77"'
                                     ]
                                 ]
@@ -526,67 +544,71 @@ class Benachrichtigung extends IPSModule
                                         'value'   => ''
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udd34"'),
+                                        'caption' => json_decode('"\ud83d\udd34"'), # red
                                         'value'   => '"\ud83d\udd34"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udfe0"'),
+                                        'caption' => json_decode('"\ud83d\udfe0"'), # orange
                                         'value'   => '"\ud83d\udfe0"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udfe1"'),
+                                        'caption' => json_decode('"\ud83d\udfe1"'), # yellow
                                         'value'   => '"\ud83d\udfe1"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udfe2"'),
+                                        'caption' => json_decode('"\ud83d\udfe2"'), # green
                                         'value'   => '"\ud83d\udfe2"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udd35"'),
+                                        'caption' => json_decode('"\ud83d\udd35"'), # blue
                                         'value'   => '"\ud83d\udd35"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udfe3"'),
+                                        'caption' => json_decode('"\ud83d\udfe3"'), # violett
                                         'value'   => '"\ud83d\udfe3"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udfe4"'),
+                                        'caption' => json_decode('"\ud83d\udfe4"'), # brown
                                         'value'   => '"\ud83d\udfe4"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\u26ab"'),
+                                        'caption' => json_decode('"\u26ab"'), # black
                                         'value'   => '"\u26ab"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\u26aa"'),
+                                        'caption' => json_decode('"\u26aa"'), # white
                                         'value'   => '"\u26aa"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udd57"'),
+                                        'caption' => json_decode('"\ud83d\udd57"'), # clock
                                         'value'   => '"\ud83d\udd57"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\u26a0\ufe0f"'),
+                                        'caption' => json_decode('"\u2705"'), # # white_check_mark
+                                        'value'   => '"\u2705"'
+                                    ],
+                                    [
+                                        'caption' => json_decode('"\u26a0\ufe0f"'), # warning
                                         'value'   => '"\u26a0\ufe0f"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\u2757"'),
+                                        'caption' => json_decode('"\u2757"'), # red exclamation mark
                                         'value'   => '"\u2757"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udeab"'),
+                                        'caption' => json_decode('"\ud83d\udeab"'), # no entry sign
                                         'value'   => '"\ud83d\udeab"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udd25"'),
+                                        'caption' => json_decode('"\ud83d\udd25"'), # flame
                                         'value'   => '"\ud83d\udd25"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\ud83d\udca7"'),
+                                        'caption' => json_decode('"\ud83d\udca7"'), # droplet
                                         'value'   => '"\ud83d\udca7"'
                                     ],
                                     [
-                                        'caption' => json_decode('"\uD83E\uDD77"'),
+                                        'caption' => json_decode('"\uD83E\uDD77"'), # nina
                                         'value'   => '"\uD83E\uDD77"'
                                     ]
                                 ]
@@ -1226,6 +1248,44 @@ class Benachrichtigung extends IPSModule
             ]
         ];
 
+        ##### Template panel
+
+        $form['actions'][] = [
+            'type'    => 'ExpansionPanel',
+            'caption' => 'Vorlagen',
+            'items'   => [
+                [
+                    'type'  => 'RowLayout',
+                    'items' => [
+                        [
+                            'type'    => 'SelectInstance',
+                            'name'    => 'TemplateInstance',
+                            'caption' => 'Instanz',
+                            'width'   => '600px'
+                        ],
+                        [
+                            'type'    => 'Label',
+                            'caption' => ' '
+                        ],
+                        [
+                            'type'    => 'Button',
+                            'caption' => 'Alarmzonensteuerung',
+                            'onClick' => self::MODULE_PREFIX . '_AddTemplate($id, $TemplateInstance, 0);'
+                        ],
+                        [
+                            'type'    => 'Label',
+                            'caption' => ' '
+                        ],
+                        [
+                            'type'    => 'Button',
+                            'caption' => 'Alarmzone',
+                            'onClick' => self::MODULE_PREFIX . '_AddTemplate($id, $TemplateInstance, 1);'
+                        ]
+                    ]
+                ]
+            ]
+        ];
+
         #################### Status
 
         $library = IPS_GetLibrary(self::LIBRARY_GUID);
@@ -1264,6 +1324,283 @@ class Benachrichtigung extends IPSModule
     public function ReloadConfiguration()
     {
         $this->ReloadForm();
+    }
+
+    public function AddTemplate(int $TemplateInstance, int $TemplateType): void
+    {
+        $triggerVariables = json_decode($this->ReadPropertyString('TriggerVariables'), true);
+        if ($TemplateInstance == 0 || @!IPS_ObjectExists($TemplateInstance)) {
+            return;
+        }
+        switch ($TemplateType) {
+            case 0: # alarm zone control
+                $systemStateID = 0;
+                $doorWindowStateID = 0;
+                $alarmStateID = 0;
+                $triggeringDetectorID = 0;
+                $children = IPS_GetChildrenIDs($TemplateInstance);
+                foreach ($children as $child) {
+                    $ident = IPS_GetObject($child)['ObjectIdent'];
+                    if ($ident == 'SystemState') {
+                        $systemStateID = $child;
+                    }
+                    if ($ident == 'DoorWindowState') {
+                        $doorWindowStateID = $child;
+                    }
+                    if ($ident == 'AlarmState') {
+                        $alarmStateID = $child;
+                    }
+                    if ($ident == 'AlertingSensor') {
+                        $triggeringDetectorID = $child;
+                    }
+                }
+                $config = json_decode(IPS_GetConfiguration($TemplateInstance), true);
+                $disarmed = [
+                    'Use'                                 => true,
+                    'Description'                         => 'Alarmanlage unscharf',
+                    'ID'                                  => $systemStateID,
+                    'TriggerType'                         => 6,
+                    'TriggerValue'                        => 'false',
+                    'SecondVariable'                      => 0,
+                    'SecondVariableValue'                 => '',
+                    'Title'                               => $config['Location'],
+                    'TriggeringDetector'                  => 0,
+                    'MessageText'                         => 'Alarmanlage unscharf!',
+                    'UseTimestamp'                        => true,
+                    'UseWebFrontNotification'             => false,
+                    'WebFrontNotificationTextSymbol'      => '"\ud83d\udfe2"',
+                    'Icon'                                => 'Warning',
+                    'WebFrontNotificationDisplayDuration' => 0,
+                    'UseWebFrontPushNotification'         => true,
+                    'WebFrontPushNotificationTextSymbol'  => '"\ud83d\udfe2"',
+                    'WebFrontPushNotificationSound'       => '',
+                    'WebFrontPushNotificationTargetID'    => 0,
+                    'UseMailer'                           => false,
+                    'Subject'                             => '',
+                    'UseSMS'                              => false,
+                    'UseTelegram'                         => false
+                ];
+                array_push($triggerVariables, $disarmed);
+
+                $armedOpenWindow = [
+                    'Use'                                 => true,
+                    'Description'                         => 'Alarmanlage bedingt scharf',
+                    'ID'                                  => $systemStateID,
+                    'TriggerType'                         => 6,
+                    'TriggerValue'                        => 'true',
+                    'SecondVariable'                      => $doorWindowStateID,
+                    'SecondVariableValue'                 => 'true',
+                    'Title'                               => $config['Location'],
+                    'TriggeringDetector'                  => 0,
+                    'MessageText'                         => 'Alarmanlage scharf, jedoch stehen noch Türen oder Fenster offen!',
+                    'UseTimestamp'                        => true,
+                    'UseWebFrontNotification'             => false,
+                    'WebFrontNotificationTextSymbol'      => '"\ud83d\udfe1"',
+                    'Icon'                                => 'Warning',
+                    'WebFrontNotificationDisplayDuration' => 0,
+                    'UseWebFrontPushNotification'         => true,
+                    'WebFrontPushNotificationTextSymbol'  => '"\ud83d\udfe1"',
+                    'WebFrontPushNotificationSound'       => 'alarm',
+                    'WebFrontPushNotificationTargetID'    => 0,
+                    'UseMailer'                           => false,
+                    'Subject'                             => '',
+                    'UseSMS'                              => false,
+                    'UseTelegram'                         => false
+                ];
+                array_push($triggerVariables, $armedOpenWindow);
+
+                $armed = [
+                    'Use'                                 => true,
+                    'Description'                         => 'Alarmanlage scharf',
+                    'ID'                                  => $systemStateID,
+                    'TriggerType'                         => 6,
+                    'TriggerValue'                        => 'true',
+                    'SecondVariable'                      => $doorWindowStateID,
+                    'SecondVariableValue'                 => 'false',
+                    'Title'                               => $config['Location'],
+                    'TriggeringDetector'                  => 0,
+                    'MessageText'                         => 'Alarmanlage scharf!',
+                    'UseTimestamp'                        => true,
+                    'UseWebFrontNotification'             => false,
+                    'WebFrontNotificationTextSymbol'      => '"\ud83d\udd34"',
+                    'Icon'                                => 'Warning',
+                    'WebFrontNotificationDisplayDuration' => 0,
+                    'UseWebFrontPushNotification'         => true,
+                    'WebFrontPushNotificationTextSymbol'  => '"\ud83d\udd34"',
+                    'WebFrontPushNotificationSound'       => '',
+                    'WebFrontPushNotificationTargetID'    => 0,
+                    'UseMailer'                           => false,
+                    'Subject'                             => '',
+                    'UseSMS'                              => false,
+                    'UseTelegram'                         => false
+                ];
+                array_push($triggerVariables, $armed);
+
+                $alarm = [
+                    'Use'                                 => true,
+                    'Description'                         => 'Alarm',
+                    'ID'                                  => $triggeringDetectorID,
+                    'TriggerType'                         => 1,
+                    'TriggerValue'                        => '',
+                    'SecondVariable'                      => $alarmStateID,
+                    'SecondVariableValue'                 => 1,
+                    'Title'                               => $config['Location'],
+                    'TriggeringDetector'                  => $triggeringDetectorID,
+                    'MessageText'                         => '%1$s hat einen Alarm ausgelöst!',
+                    'UseTimestamp'                        => true,
+                    'UseWebFrontNotification'             => false,
+                    'WebFrontNotificationTextSymbol'      => '"\u2757"',
+                    'Icon'                                => 'Warning',
+                    'WebFrontNotificationDisplayDuration' => 0,
+                    'UseWebFrontPushNotification'         => true,
+                    'WebFrontPushNotificationTextSymbol'  => '"\u2757"',
+                    'WebFrontPushNotificationSound'       => 'alarm',
+                    'WebFrontPushNotificationTargetID'    => 0,
+                    'UseMailer'                           => true,
+                    'Subject'                             => 'Alarmauslösung ' . $config['Location'],
+                    'UseSMS'                              => false,
+                    'UseTelegram'                         => false
+                ];
+                array_push($triggerVariables, $alarm);
+                break;
+
+            case 1: # alarm zone
+                $alarmZoneID = 0;
+                $doorWindowStateID = 0;
+                $alarmStateID = 0;
+                $triggeringDetectorID = 0;
+                $children = IPS_GetChildrenIDs($TemplateInstance);
+                foreach ($children as $child) {
+                    $ident = IPS_GetObject($child)['ObjectIdent'];
+                    if ($ident == 'AlarmZoneState') {
+                        $alarmZoneID = $child;
+                    }
+                    if ($ident == 'DoorWindowState') {
+                        $doorWindowStateID = $child;
+                    }
+                    if ($ident == 'AlarmState') {
+                        $alarmStateID = $child;
+                    }
+                    if ($ident == 'AlertingSensor') {
+                        $triggeringDetectorID = $child;
+                    }
+                }
+                $config = json_decode(IPS_GetConfiguration($TemplateInstance), true);
+                $disarmed = [
+                    'Use'                                 => true,
+                    'Description'                         => $config['SystemName'] . ' unscharf',
+                    'ID'                                  => $alarmZoneID,
+                    'TriggerType'                         => 6,
+                    'TriggerValue'                        => 'false',
+                    'SecondVariable'                      => 0,
+                    'SecondVariableValue'                 => '',
+                    'Title'                               => $config['Location'],
+                    'TriggeringDetector'                  => 0,
+                    'MessageText'                         => $config['SystemName'] . ' unscharf!',
+                    'UseTimestamp'                        => true,
+                    'UseWebFrontNotification'             => false,
+                    'WebFrontNotificationTextSymbol'      => '"\ud83d\udfe2"',
+                    'Icon'                                => 'Warning',
+                    'WebFrontNotificationDisplayDuration' => 0,
+                    'UseWebFrontPushNotification'         => true,
+                    'WebFrontPushNotificationTextSymbol'  => '"\ud83d\udfe2"',
+                    'WebFrontPushNotificationSound'       => '',
+                    'WebFrontPushNotificationTargetID'    => 0,
+                    'UseMailer'                           => false,
+                    'Subject'                             => '',
+                    'UseSMS'                              => false,
+                    'UseTelegram'                         => false
+                ];
+                array_push($triggerVariables, $disarmed);
+
+                $armedOpenWindow = [
+                    'Use'                                 => true,
+                    'Description'                         => $config['SystemName'] . ' bedingt scharf',
+                    'ID'                                  => $alarmZoneID,
+                    'TriggerType'                         => 6,
+                    'TriggerValue'                        => 'true',
+                    'SecondVariable'                      => $doorWindowStateID,
+                    'SecondVariableValue'                 => 'true',
+                    'Title'                               => $config['Location'],
+                    'TriggeringDetector'                  => 0,
+                    'MessageText'                         => $config['SystemName'] . ' scharf, jedoch stehen noch Türen oder Fenster offen!',
+                    'UseTimestamp'                        => true,
+                    'UseWebFrontNotification'             => false,
+                    'WebFrontNotificationTextSymbol'      => '"\ud83d\udfe1"',
+                    'Icon'                                => 'Warning',
+                    'WebFrontNotificationDisplayDuration' => 0,
+                    'UseWebFrontPushNotification'         => true,
+                    'WebFrontPushNotificationTextSymbol'  => '"\ud83d\udfe1"',
+                    'WebFrontPushNotificationSound'       => 'alarm',
+                    'WebFrontPushNotificationTargetID'    => 0,
+                    'UseMailer'                           => false,
+                    'Subject'                             => '',
+                    'UseSMS'                              => false,
+                    'UseTelegram'                         => false
+                ];
+                array_push($triggerVariables, $armedOpenWindow);
+
+                $armed = [
+                    'Use'                                 => true,
+                    'Description'                         => $config['SystemName'] . ' scharf',
+                    'ID'                                  => $alarmZoneID,
+                    'TriggerType'                         => 6,
+                    'TriggerValue'                        => 'true',
+                    'SecondVariable'                      => $doorWindowStateID,
+                    'SecondVariableValue'                 => 'false',
+                    'Title'                               => $config['Location'],
+                    'TriggeringDetector'                  => 0,
+                    'MessageText'                         => $config['SystemName'] . ' scharf!',
+                    'UseTimestamp'                        => true,
+                    'UseWebFrontNotification'             => false,
+                    'WebFrontNotificationTextSymbol'      => '"\ud83d\udd34"',
+                    'Icon'                                => 'Warning',
+                    'WebFrontNotificationDisplayDuration' => 0,
+                    'UseWebFrontPushNotification'         => true,
+                    'WebFrontPushNotificationTextSymbol'  => '"\ud83d\udd34"',
+                    'WebFrontPushNotificationSound'       => '',
+                    'WebFrontPushNotificationTargetID'    => 0,
+                    'UseMailer'                           => false,
+                    'Subject'                             => '',
+                    'UseSMS'                              => false,
+                    'UseTelegram'                         => false
+                ];
+                array_push($triggerVariables, $armed);
+
+                $alarm = [
+                    'Use'                                 => true,
+                    'Description'                         => 'Alarm',
+                    'ID'                                  => $triggeringDetectorID,
+                    'TriggerType'                         => 1,
+                    'TriggerValue'                        => '',
+                    'SecondVariable'                      => $alarmStateID,
+                    'SecondVariableValue'                 => 1,
+                    'Title'                               => $config['Location'],
+                    'TriggeringDetector'                  => $triggeringDetectorID,
+                    'MessageText'                         => '%1$s hat einen Alarm ausgelöst!',
+                    'UseTimestamp'                        => true,
+                    'UseWebFrontNotification'             => false,
+                    'WebFrontNotificationTextSymbol'      => '"\u2757"',
+                    'Icon'                                => 'Warning',
+                    'WebFrontNotificationDisplayDuration' => 0,
+                    'UseWebFrontPushNotification'         => true,
+                    'WebFrontPushNotificationTextSymbol'  => '"\u2757"',
+                    'WebFrontPushNotificationSound'       => 'alarm',
+                    'WebFrontPushNotificationTargetID'    => 0,
+                    'UseMailer'                           => true,
+                    'Subject'                             => 'Alarmauslösung ' . $config['Location'],
+                    'UseSMS'                              => false,
+                    'UseTelegram'                         => false
+                ];
+                array_push($triggerVariables, $alarm);
+                break;
+        }
+
+        IPS_SetProperty($this->InstanceID, 'TriggerVariables', json_encode($triggerVariables));
+        if (IPS_HasChanges($this->InstanceID)) {
+            IPS_ApplyChanges($this->InstanceID);
+        }
+        echo 'Die Vorlage Alarmzone wurde erfolgreich angelegt!';
     }
 
     public function ShowVariableDetails(int $VariableID): void
@@ -1353,6 +1690,17 @@ class Benachrichtigung extends IPSModule
         $this->UpdateFormField($ButtonName, 'visible', true);
         $this->UpdateFormField($ButtonName, 'enabled', true);
         $this->UpdateFormField($ButtonName, 'objectID', $ObjectID);
+    }
+
+    #################### Request action
+
+    public function RequestAction($Ident, $Value)
+    {
+        switch ($Ident) {
+            case 'Notification':
+                $this->SetValue($Ident, $Value);
+                break;
+        }
     }
 
     #################### Private
