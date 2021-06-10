@@ -1286,6 +1286,18 @@ class Benachrichtigung extends IPSModule
             ]
         ];
 
+        ##### Test center panel
+
+        $form['actions'][] = [
+            'type'    => 'ExpansionPanel',
+            'caption' => 'Schaltfunktion',
+            'items'   => [
+                [
+                    'type' => 'TestCenter',
+                ]
+            ]
+        ];
+
         #################### Status
 
         $library = IPS_GetLibrary(self::LIBRARY_GUID);
@@ -1381,6 +1393,33 @@ class Benachrichtigung extends IPSModule
                     'UseTelegram'                         => false
                 ];
                 array_push($triggerVariables, $disarmed);
+
+                $delayedArmed = [
+                    'Use'                                 => true,
+                    'Description'                         => 'Alarmanlage verzögert scharf',
+                    'ID'                                  => $systemStateID,
+                    'TriggerType'                         => 6,
+                    'TriggerValue'                        => '2',
+                    'SecondVariable'                      => 0,
+                    'SecondVariableValue'                 => '',
+                    'Title'                               => $config['Location'],
+                    'TriggeringDetector'                  => 0,
+                    'MessageText'                         => 'Alarmanlage wird verzögert scharf geschaltet!',
+                    'UseTimestamp'                        => true,
+                    'UseWebFrontNotification'             => false,
+                    'WebFrontNotificationTextSymbol'      => '"\ud83d\udd57"',
+                    'Icon'                                => 'Warning',
+                    'WebFrontNotificationDisplayDuration' => 0,
+                    'UseWebFrontPushNotification'         => true,
+                    'WebFrontPushNotificationTextSymbol'  => '"\ud83d\udd57"',
+                    'WebFrontPushNotificationSound'       => '',
+                    'WebFrontPushNotificationTargetID'    => 0,
+                    'UseMailer'                           => false,
+                    'Subject'                             => '',
+                    'UseSMS'                              => false,
+                    'UseTelegram'                         => false
+                ];
+                array_push($triggerVariables, $delayedArmed);
 
                 $armedOpenWindow = [
                     'Use'                                 => true,
@@ -1512,6 +1551,33 @@ class Benachrichtigung extends IPSModule
                     'UseTelegram'                         => false
                 ];
                 array_push($triggerVariables, $disarmed);
+
+                $delayedArmed = [
+                    'Use'                                 => true,
+                    'Description'                         => $config['SystemName'] . ' verzögert scharf',
+                    'ID'                                  => $alarmZoneID,
+                    'TriggerType'                         => 6,
+                    'TriggerValue'                        => '2',
+                    'SecondVariable'                      => 0,
+                    'SecondVariableValue'                 => '',
+                    'Title'                               => $config['Location'],
+                    'TriggeringDetector'                  => 0,
+                    'MessageText'                         => $config['SystemName'] . ' wird verzögert scharf geschaltet!',
+                    'UseTimestamp'                        => true,
+                    'UseWebFrontNotification'             => false,
+                    'WebFrontNotificationTextSymbol'      => '"\ud83d\udd57"',
+                    'Icon'                                => 'Warning',
+                    'WebFrontNotificationDisplayDuration' => 0,
+                    'UseWebFrontPushNotification'         => true,
+                    'WebFrontPushNotificationTextSymbol'  => '"\ud83d\udd57"',
+                    'WebFrontPushNotificationSound'       => '',
+                    'WebFrontPushNotificationTargetID'    => 0,
+                    'UseMailer'                           => false,
+                    'Subject'                             => '',
+                    'UseSMS'                              => false,
+                    'UseTelegram'                         => false
+                ];
+                array_push($triggerVariables, $delayedArmed);
 
                 $armedOpenWindow = [
                     'Use'                                 => true,
