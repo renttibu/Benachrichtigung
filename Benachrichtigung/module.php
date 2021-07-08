@@ -489,6 +489,10 @@ class Benachrichtigung extends IPSModule
                                     [
                                         'caption' => json_decode('"\uD83E\uDD77"'), # nina
                                         'value'   => '"\uD83E\uDD77"'
+                                    ],
+                                    [
+                                        'caption' => json_decode('"\uD83D\uDC4D"'), # thumbs up
+                                        'value'   => '"\uD83D\uDC4D"'
                                     ]
                                 ]
                             ]
@@ -610,6 +614,10 @@ class Benachrichtigung extends IPSModule
                                     [
                                         'caption' => json_decode('"\uD83E\uDD77"'), # nina
                                         'value'   => '"\uD83E\uDD77"'
+                                    ],
+                                    [
+                                        'caption' => json_decode('"\uD83D\uDC4D"'), # thumbs up
+                                        'value'   => '"\uD83D\uDC4D"'
                                     ]
                                 ]
                             ]
